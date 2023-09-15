@@ -1,0 +1,338 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Maven知识点 | violet617</title><meta name="author" content="violet617"><meta name="copyright" content="violet617"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="什么是Maven？                 Maven是一个开源的项目管理和构建工具，用于帮助开发人员自动化构建、测试和部署Java项目。它提供了一个标准化的项目结构和一套强大的构建规则，以及丰富的插件生态系统，使得项目的构建和依赖管理变得简单和可靠。Maven的核心概念包括项目对象模型（Project Object Model，POM）、坐标、依赖管理和生命周期。项目对象模型是一个XML">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Maven知识点">
+<meta property="og:url" content="http://example.com/2023/05/08/Maven%E7%9F%A5%E8%AF%86%E7%82%B9/index.html">
+<meta property="og:site_name" content="violet617">
+<meta property="og:description" content="什么是Maven？                 Maven是一个开源的项目管理和构建工具，用于帮助开发人员自动化构建、测试和部署Java项目。它提供了一个标准化的项目结构和一套强大的构建规则，以及丰富的插件生态系统，使得项目的构建和依赖管理变得简单和可靠。Maven的核心概念包括项目对象模型（Project Object Model，POM）、坐标、依赖管理和生命周期。项目对象模型是一个XML">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/suolong.jpeg">
+<meta property="article:published_time" content="2023-05-08T08:18:29.000Z">
+<meta property="article:modified_time" content="2023-09-15T14:17:20.566Z">
+<meta property="article:author" content="violet617">
+<meta property="article:tag" content="Maven">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/suolong.jpeg"><link rel="shortcut icon" href="/img/door_open.png"><link rel="canonical" href="http://example.com/2023/05/08/Maven%E7%9F%A5%E8%AF%86%E7%82%B9/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Maven知识点',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-09-15 22:17:20'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/modify.css"><link rel="stylesheet" href="/css/layout.css"><meta name="generator" content="Hexo 6.3.0"></head><body><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="/css/big-counter.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/suolong.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-compass"></i><span> 动态</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 時間軸</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/bangumis/"><i class="fa-fw fas fa-video"></i><span> 追番</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="violet617"><img class="site-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/door_open.png"/><span class="site-name">violet617</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-compass"></i><span> 动态</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 時間軸</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/bangumis/"><i class="fa-fw fas fa-video"></i><span> 追番</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Maven知识点</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-08T08:18:29.000Z" title="发表于 2023-05-08 16:18:29">2023-05-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-09-15T14:17:20.566Z" title="更新于 2023-09-15 22:17:20">2023-09-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Maven知识点"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="什么是Maven？"><a href="#什么是Maven？" class="headerlink" title="什么是Maven？"></a>什么是Maven？</h1><details class="folding-tag" cyan><summary>  </summary><div class='content'>
+              <ul><li>Maven是一个开源的项目管理和构建工具，用于帮助开发人员自动化构建、测试和部署Java项目。它提供了一个标准化的项目结构和一套强大的构建规则，以及丰富的插件生态系统，使得项目的构建和依赖管理变得简单和可靠。</li><li>Maven的核心概念包括项目对象模型（Project Object Model，POM）、坐标、依赖管理和生命周期。项目对象模型是一个XML文件，描述了项目的基本信息、依赖信息、插件配置等。</li><li>依赖管理功能可以让开发人员方便的生命和管理项目所依赖的外部库和模块。生命周期定义了一系列的构建阶段和插件目标，开发人员可以根据需求执行不同的构建任务。</li></ul>
+              </div>
+            </details>
+
+<h1 id="Maven能为我们解决什么问题？"><a href="#Maven能为我们解决什么问题？" class="headerlink" title="Maven能为我们解决什么问题？"></a>Maven能为我们解决什么问题？</h1>
+<details class="folding-tag" cyan><summary>  </summary>
+    <div class='content'>
+              <ol><li>添加第三方jar包<ul><li>使用Maven之前，我们都是手动复制jar包到项目的<code>WEB-INF/lib</code>下，每个项目都会有一份，造成大量重复文件。而Maven将jar包放在本地仓库中统一管理，需要jar包只需要用坐标的方式引用即可。</li></ul></li><li>jar包之间的依赖关系<ul><li>jar包之间往往是不独立的，很多jar包需要在其他jar包的支持下才能够正常工作，成为jar包之间的依赖关系，如果我们手动去导入，要知道jar包之间的依赖关系并一一导入，这样是极其麻烦而且容易出错的。如果我们使用maven，它能够将当前jar包所依赖的其他所有jar包全部导入。</li></ul></li><li>获取第三方jar包<ul><li>开发过程中我们需要用到很多jar包，每个jar包在官网的获取方式不尽相同，给工作带来了额外的困扰。但是使用Maven可以以坐标的方式依赖一个jar包，Maven从中央仓库进行下载，并同时下载这个jar包依赖的其他jar包</li></ul></li><li>将项目拆分为过个工程模块<ul><li>随着项目的规模越来越大，已经不可能通过package结构来划分模块，必须将项目拆分为多个工程协同开发。</li></ul></li></ol>
+    </div>
+</details>
+
+<h1 id="说说Maven有什么优缺点？"><a href="#说说Maven有什么优缺点？" class="headerlink" title="说说Maven有什么优缺点？"></a>说说Maven有什么优缺点？</h1><details class="folding-tag" cyan><summary>  </summary>
+              <div class='content'>
+              <ul><li>优点<ol><li>简化了项目依赖管理</li><li>易于上手，对于新手来说，了解几个常用命令即可满足日常工作需求</li><li>便于与持续集成工具（jenkins）整合</li><li>便于项目升级，无论是项目本身还是项目使用的依赖</li><li>maven有很多插件，便于功能扩展，例如生产站点、自动发布版本等</li></ol></li><li>缺点<ul><li>Maven是一个庞大的构建系统，学习难度大，入门容易但精通难</li><li>Maven采用约定大于配置的策略，虽然上手容易，但一旦出现问题，很难调试（例如网络环境较差，导致很多repository无法访问）</li></ul></li></ul>
+              </div>
+            </details>
+
+<h1 id="什么是Maven的坐标？"><a href="#什么是Maven的坐标？" class="headerlink" title="什么是Maven的坐标？"></a>什么是Maven的坐标？</h1>
+<details class="folding-tag" cyan><summary>  </summary>
+              <div class='content'>
+              <ul><li>Maven坐标是用于唯一标识一个项目或模块的信息，它由一组固定的属性组成，包括groupId、artifactId和Version<ul><li>groupId(组织名称)：用于表示项目所属的组织或团队，一般情况下，它的命名是翻转的域名（com.example），但也可以根据实际需求来自定义。</li><li>artifactId(项目组织)：artifactId是指项目的唯一标识符，用于区分不同的项目。它通常是项目的名称，用于在仓库中唯一标识一个项目，在同一个groupId下，不同的项目应该有不同的artifactId</li><li>version(版本号)：version表示项目的版本号。它用于区分不同版本的项目，以便在依赖管理和构建过程中正确选择和使用。版本号可以采用标准的数字格式（例如1.0、2.1.7）或其他约定的格式。</li></ul></li><li>通过组合这些属性，Maven的坐标提供了一种唯一标识的定位项目的方式。在依赖管理中，其他项目可以通过引用该坐标来声明对该项目的依赖。Maven会根据这些坐标信息，自动下载并引入所需的依赖项。</li></ul>
+              </div>
+            </details>
+
+<h1 id="讲一下maven的生命周期"><a href="#讲一下maven的生命周期" class="headerlink" title="讲一下maven的生命周期"></a>讲一下maven的生命周期</h1><details class="folding-tag" cyan><summary>  </summary>
+              <div class='content'>
+              <div class="table-container"><table><thead><tr><th style="text-align:center">阶段</th><th style="text-align:center">处理</th><th style="text-align:center">描述</th></tr></thead><tbody><tr><td style="text-align:center">validate</td><td style="text-align:center">验证项目</td><td style="text-align:center">验证项目是否正确且所有必须信息是可用的</td></tr><tr><td style="text-align:center">compile</td><td style="text-align:center">执行编译</td><td style="text-align:center">源代码编译在此阶段完成</td></tr><tr><td style="text-align:center">test</td><td style="text-align:center">测试</td><td style="text-align:center">使用适当的单元测试框架(例JUnit)运行测试</td></tr><tr><td style="text-align:center">package</td><td style="text-align:center">打包</td><td style="text-align:center">创建JAR/WAR包如在 pom,xml 中定义提及的包</td></tr><tr><td style="text-align:center">verify</td><td style="text-align:center">检查</td><td style="text-align:center">对集成测试的结果进行检查，以保证质量达标</td></tr><tr><td style="text-align:center">install</td><td style="text-align:center">安装</td><td style="text-align:center">安装打包的项目到本地仓库，以供其他项目使用</td></tr><tr><td style="text-align:center">deploy</td><td style="text-align:center">部署</td><td style="text-align:center">拷贝最终的工程包到远程仓库中，以共享给其他开发人员和工程</td></tr></tbody></table></div>
+              </div>
+            </details>
+
+<h1 id="说说你熟悉哪些maven命令？"><a href="#说说你熟悉哪些maven命令？" class="headerlink" title="说说你熟悉哪些maven命令？"></a>说说你熟悉哪些maven命令？</h1><details class="folding-tag" cyan><summary>  </summary>
+              <div class='content'>
+              <div class="table-container"><table><thead><tr><th style="text-align:center">Maven 命令</th><th style="text-align:center">功能</th></tr></thead><tbody><tr><td style="text-align:center">mvn archetype:generate</td><td style="text-align:center">创建 Maven 项目</td></tr><tr><td style="text-align:center">mvn compile</td><td style="text-align:center">编译源代码</td></tr><tr><td style="text-align:center">mvn deploy</td><td style="text-align:center">发布项目</td></tr><tr><td style="text-align:center">mvn test-compile</td><td style="text-align:center">编译测试源代码</td></tr><tr><td style="text-align:center">mvn test</td><td style="text-align:center">运行应用程序中的单元测试</td></tr><tr><td style="text-align:center">mvn site</td><td style="text-align:center">生成项目相关信息的网站</td></tr><tr><td style="text-align:center">mvn clean</td><td style="text-align:center">清除项目目录中的生成结果</td></tr><tr><td style="text-align:center">mvn package</td><td style="text-align:center">根据项目生成的 JAR</td></tr><tr><td style="text-align:center">mvn install</td><td style="text-align:center">在本地 Repository 中安装 JAR</td></tr><tr><td style="text-align:center">mvn eclipse:eclipse</td><td style="text-align:center">生成 Eclipse 项目文件</td></tr><tr><td style="text-align:center">mvn jetty:run</td><td style="text-align:center">启动 Jetty 服务</td></tr><tr><td style="text-align:center">mvn tomcat:run</td><td style="text-align:center">启动 Tomcat 服务</td></tr><tr><td style="text-align:center">mvn clean package -Dmaven.test.skip=true</td><td style="text-align:center">清除以前的包后重新打包，跳过测试类</td></tr></tbody></table></div>
+              </div>
+            </details>
+
+<h1 id="如何解决依赖传递引起的版本冲突？"><a href="#如何解决依赖传递引起的版本冲突？" class="headerlink" title="如何解决依赖传递引起的版本冲突？"></a>如何解决依赖传递引起的版本冲突？</h1><details class="folding-tag" cyan><summary>  </summary>
+              <div class='content'>
+              <p>可以通过在依赖项声明中使用<code>&lt;exclusions&gt;</code>标签来排除特定的传递依赖项。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.example<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>example-library<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>conflicting-group<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>conflicting-artifact<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+              </div>
+            </details>
+
+<h1 id="说说maven的依赖原则"><a href="#说说maven的依赖原则" class="headerlink" title="说说maven的依赖原则"></a>说说maven的依赖原则</h1><details class="folding-tag" cyan><summary>  </summary>
+              <div class='content'>
+              <ol><li>最短路径原则（依赖传递的路径越短越优先）</li><li>pom文件申明顺序优先（路径长度一样，则先申明的优先）</li><li>覆写原则（当前pom文件里申明的直接覆盖父工程传过来的）</li></ol>
+              </div>
+            </details>
+            
+<h1 id="说说依赖的解析机制"><a href="#说说依赖的解析机制" class="headerlink" title="说说依赖的解析机制"></a>说说依赖的解析机制</h1><details class="folding-tag" cyan><summary>  </summary>
+              <div class='content'>
+              <ol><li>读取POM文件：Maven首先读取项目的POM文件，其中包含了项目依赖的配置信息。</li><li>解析依赖坐标：Maven解析POM文件中的依赖坐标，包括groupId、artifactId和version等信息，这些坐标唯一标识了一个依赖项。</li><li>检查本地仓库：Maven首先检查本地仓库（通常位于用户目录的.m2目录下），看是否已经存在所需的依赖项。如果已经存在，并且版本匹配，则直接使用本地仓库中的依赖项，无需下载。</li><li>下载依赖项：如果本地仓库中不存在所需的依赖项，或者版本不匹配，Maven会尝试从配置的远程仓库（如Maven中央仓库）下载依赖项。Maven会根据依赖坐标构建远程仓库的URL，下载相应的JAR文件。</li><li>解析依赖关系：Maven解析依赖项的传递关系。它会检查所下载的依赖项的POM文件，找到他们的传递依赖项，并重复以上步骤来解析和下载传递依赖项。</li><li>版本冲突解决：当存在多个依赖项的不同版本时，Maven使用冲突解决机制来确定最终使用的版本。通常会选择路径最短的依赖项（最短路径原则）或者根据POM文件中声明顺序选择优先的版本。</li><li>构建依赖树：Maven根据解析结果构建一个依赖树，表示项目的依赖关系和层次结构。这个依赖树包括直接依赖和传递依赖。</li><li>传递依赖管理：Maven会将解析的依赖项添加到项目的类路径中，以便在编译、测试和运行时使用。它还会管理传递依赖的范围和冲突解决。</li></ol>
+              </div>
+            </details></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">violet617</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/05/08/Maven%E7%9F%A5%E8%AF%86%E7%82%B9/">http://example.com/2023/05/08/Maven%E7%9F%A5%E8%AF%86%E7%82%B9/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">violet617</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Maven/">Maven</a></div><div class="post_share"><div class="social-share" data-image="/img/suolong.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/05/05/MyBatis%E7%9F%A5%E8%AF%86%E7%82%B9/" title="MyBatis知识点"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">MyBatis知识点</div></div></a></div><div class="next-post pull-right"><a href="/2023/05/12/Redis%E7%9F%A5%E8%AF%86%E7%82%B9/" title="Redis知识点"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Redis知识点</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/suolong.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">violet617</div><div class="author-info__description">violet617的个人博客</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFMaven%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">什么是Maven？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Maven%E8%83%BD%E4%B8%BA%E6%88%91%E4%BB%AC%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">Maven能为我们解决什么问题？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4Maven%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%BC%BA%E7%82%B9%EF%BC%9F"><span class="toc-number">3.</span> <span class="toc-text">说说Maven有什么优缺点？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFMaven%E7%9A%84%E5%9D%90%E6%A0%87%EF%BC%9F"><span class="toc-number">4.</span> <span class="toc-text">什么是Maven的坐标？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%B2%E4%B8%80%E4%B8%8Bmaven%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">5.</span> <span class="toc-text">讲一下maven的生命周期</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4%E4%BD%A0%E7%86%9F%E6%82%89%E5%93%AA%E4%BA%9Bmaven%E5%91%BD%E4%BB%A4%EF%BC%9F"><span class="toc-number">6.</span> <span class="toc-text">说说你熟悉哪些maven命令？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E4%BE%9D%E8%B5%96%E4%BC%A0%E9%80%92%E5%BC%95%E8%B5%B7%E7%9A%84%E7%89%88%E6%9C%AC%E5%86%B2%E7%AA%81%EF%BC%9F"><span class="toc-number">7.</span> <span class="toc-text">如何解决依赖传递引起的版本冲突？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4maven%E7%9A%84%E4%BE%9D%E8%B5%96%E5%8E%9F%E5%88%99"><span class="toc-number">8.</span> <span class="toc-text">说说maven的依赖原则</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4%E4%BE%9D%E8%B5%96%E7%9A%84%E8%A7%A3%E6%9E%90%E6%9C%BA%E5%88%B6"><span class="toc-number">9.</span> <span class="toc-text">说说依赖的解析机制</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/13/hello-world/" title="Hello World">Hello World</a><time datetime="2023-09-13T06:42:05.792Z" title="发表于 2023-09-13 14:42:05">2023-09-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/15/MQ%E7%9F%A5%E8%AF%86%E7%82%B9/" title="MQ知识点">MQ知识点</a><time datetime="2023-05-15T04:24:18.000Z" title="发表于 2023-05-15 12:24:18">2023-05-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/12/Redis%E7%9F%A5%E8%AF%86%E7%82%B9/" title="Redis知识点">Redis知识点</a><time datetime="2023-05-12T05:54:11.000Z" title="发表于 2023-05-12 13:54:11">2023-05-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/08/Maven%E7%9F%A5%E8%AF%86%E7%82%B9/" title="Maven知识点">Maven知识点</a><time datetime="2023-05-08T08:18:29.000Z" title="发表于 2023-05-08 16:18:29">2023-05-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/05/MyBatis%E7%9F%A5%E8%AF%86%E7%82%B9/" title="MyBatis知识点">MyBatis知识点</a><time datetime="2023-05-05T04:29:19.000Z" title="发表于 2023-05-05 12:29:19">2023-05-05</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By violet617</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'BYQrZblZD5jDi2wc5Hc8N30F-gzGzoHsz',
+      appKey: 'jtDyCBvdEgg46YOnGKW4DGA9',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="爱国,敬业,诚信,友善" data-fontsize="15px" data-random="true" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="music"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
