@@ -1,0 +1,63 @@
+ details {
+	border: 1px solid #c8e6ec;
+	border-radius: 4px;
+	padding: 0.5em 0.5em 0;
+	background: #ffffff;
+	color: rgb(0, 0, 0);
+  }
+   
+  summary {
+	display: block;
+	background: #c8e6eb;
+	font-weight: bold;
+	margin: -0.5em -0.5em 0;
+	padding: 16px;
+	padding-left: 2.2rem;
+	position: relative;
+	cursor: pointer;
+  }
+   
+  summary:before {
+	content: '';
+	border-width: 0.4rem;
+	border-style: solid;
+	border-color: transparent transparent transparent #fff;
+	position: absolute;
+	top: 1.3rem;
+	left: 1rem;
+	transform: rotate(0);
+	transform-origin: 0.2rem 50%;
+	transition: 0.25s transform ease;
+  }
+   
+  details summary::-webkit-details-marker {
+	display:none;
+  }
+  details[open] > summary:before {
+	transform: rotate(90deg);
+  }
+   
+   
+  details[open] > summary::before {
+	transform: rotate(90deg);
+  }
+   
+  summary:focus {
+	outline: none;
+	box-shadow: none;
+  }
+   
+  details[open] {
+	padding: 0.5em;
+  }
+   
+  details[open] summary {
+	border-bottom: 1px solid rgb(170, 170, 170);
+	margin-bottom: 0.5em;
+  }
+
+  .content {
+	padding: 10px;
+	border-top: none;
+  }
+  
