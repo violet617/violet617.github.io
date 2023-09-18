@@ -60,4 +60,17 @@
 	padding: 10px;
 	border-top: none;
   }
-  
+/* 翻页按钮居中 */
+#pagination {
+    width: 100%;
+    margin: auto;
+  }
+/* 评论背景图*/
+#veditor {
+    background-image: url(../img/avatar.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-color: rgba(255, 255, 255, 0);
+    resize: vertical
+}
