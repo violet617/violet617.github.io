@@ -1,3 +1,5 @@
+/* 动态加载过渡动画 */
+
 .pace {
 	-webkit-pointer-events: none;
 	pointer-events: none;
@@ -36,5 +38,9 @@
 	line-height: 1;
 	text-align: right;
 	color: rgba(57, 197, 187, 0.19999999999999996);
+	/* color: rgba(35,35,35,0.5);
+    color: #99999a;
+    color: #37e2dd;
+    color: #232323; */
 }
 

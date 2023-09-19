@@ -66,14 +66,14 @@
     margin: auto;
   }
 /* 评论背景图*/
-#veditor {
+/* #veditor {
     background-image: url(../img/avatar.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right;
     background-color: rgba(255, 255, 255, 0);
     resize: vertical
-}
+} */
 /* 滚动条 */
 ::-webkit-scrollbar {
 	width: 8px;
@@ -108,6 +108,48 @@
 	color: #fff;
 	background-color: #49b1f5;
   }
+  /* 背景渐变
   #web_bg {
 	background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
-	} 
+	}  */
+
+/* 页脚透明 */
+#footer{
+	color: #000;
+	background: transparent!important;
+  }
+  /* 头图透明 */
+  #page-header{
+	background: transparent!important;
+  }
+  /*top-img黑色透明玻璃效果移除，不建议加，除非你执着于完全一图流或者背景图对比色明显 */
+  #page-header.post-bg:before {
+	background-color: transparent!important;
+  }
+  
+  /* bf更新到4.0.1之后，使用这个
+   #page-header:not(.not-top-img):before {
+	  background-color: transparent!important;
+  } */
+  
+  /*夜间模式伪类遮罩层透明*/
+  [data-theme="dark"]
+	#footer::before{
+		background: transparent!important;
+	  }
+  [data-theme="dark"]
+	#page-header::before{
+	  background: transparent!important;
+	  }
+  
+/*指针样式*/
+body {
+    cursor: url(https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/default.cur),
+        default;
+}
+/*链接小手样式*/
+a,
+img {
+    cursor: url(https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/pointer.cur),
+        default;
+}
