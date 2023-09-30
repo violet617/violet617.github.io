@@ -1,4 +1,4 @@
- details {
+ /* details {
 	border: 1px solid #c8e6ec;
 	border-radius: 4px;
 	padding: 0.5em 0.5em 0;
@@ -59,7 +59,7 @@
   .content {
 	padding: 10px;
 	border-top: none;
-  }
+  } */
 /* 翻页按钮居中 */
 #pagination {
     width: 100%;
